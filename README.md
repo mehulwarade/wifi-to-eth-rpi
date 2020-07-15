@@ -16,6 +16,7 @@ Hardware: RPi 3 Model B+ (armv7l)
 
 ## Instructions (Easy):
 
+#### Set your ethernet adapter to a static IP address
 We need to configure interfaces. We will assign a static IP address to  eth0 which will be used as gateway. Open the interfaces file:
 ```sudo nano /etc/network/interfaces```
 
@@ -55,8 +56,42 @@ dhcp-range=192.168.2.2,192.168.2.100,12h
 
 ```
 
-git clone https://github.com/mehulwarade/wifi-to-eth-rpi
-cd wifi-to-eth-rpi
-sh wifi-eth.sh
+#### Use iptables to configure a NAT setting to share the Wifi connection with the ethernet port
+NAT stands for Network Address Translation. This allows a single IP address to server as a router on a network. So in this case the ethernet adapter on the RPi will serve as the router for whatever device you attach to it. The NAT settings will route the ethernet requests through the Wifi connection.
+
+Run the following command per line in terminal:
+
+```s
+sudo iptables -F
+sudo iptables -t nat -F
+sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+sudo iptables -A FORWARD -i wlan0 -o eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i eth0 -o wlan0 -j ACCEPT
+```
+
+#### Configure the dnsmasq settings
+Edit /etc/sysctl.conf and uncomment this line:
+
+net.ipv4.ip_forward=1
+
+```sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward```
+
+#### Next set up ip routing:
+```conf
+sudo ip route del 0/0 dev eth0 &> /dev/null
+a=`route | awk "/${wlan}/"'{print $5+1;exit}'`
+sudo route add -net default gw 192.168.2.1 netmask 0.0.0.0 dev eth0 metric $a
+```
+
+#### Restart the dnsmasq service
+
+```sudo systemctl restart dnsmasq```
 
 #### That's it! Plug ethernet cable into other device and it should start having internet connection
+
+
+## References:
+https://www.instructables.com/id/Share-WiFi-With-Ethernet-Port-on-a-Raspberry-Pi/
+https://raspberrypi.stackexchange.com/a/50073
+https://github.com/arpitjindal97/raspbian-recipes/blob/master/wifi-to-eth-route.sh 
+https://vpsfix.com/community/server-administration/no-etc-rc-local-file-on-ubuntu-18-04-heres-what-to-do/ 
