@@ -2,7 +2,7 @@
 Code and instructions to use RPi as a wifi entender.
 
 # GOAL at the end:
-![alt text](https://github.com/mehulwarade/wifi-to-eth-rpi/blob/master/goal.png?raw=true =100x20)
+![](https://github.com/mehulwarade/wifi-to-eth-rpi/blob/master/goal.png?raw=true =300x200)
 
 #Tested on:
 OS: Dietpi v6.31.2
