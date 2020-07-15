@@ -91,7 +91,11 @@ sudo route add -net default gw 192.168.2.1 netmask 0.0.0.0 dev eth0 metric $a
 
 
 ## References:
-https://www.instructables.com/id/Share-WiFi-With-Ethernet-Port-on-a-Raspberry-Pi/
-https://raspberrypi.stackexchange.com/a/50073
-https://github.com/arpitjindal97/raspbian-recipes/blob/master/wifi-to-eth-route.sh 
+https://www.instructables.com/id/Share-WiFi-With-Ethernet-Port-on-a-Raspberry-Pi/ 
+
+https://raspberrypi.stackexchange.com/a/50073 
+
+https://github.com/arpitjindal97/raspbian-recipes/blob/master/wifi-to-eth-route.sh  
+
 https://vpsfix.com/community/server-administration/no-etc-rc-local-file-on-ubuntu-18-04-heres-what-to-do/ 
+ 
