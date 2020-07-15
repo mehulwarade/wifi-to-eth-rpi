@@ -2,7 +2,7 @@
 Code and instructions to use RPi as a wifi entender.
 
 # GOAL at the end:
-![alt text](https://github.com/mehulwarade/wifi-to-eth-rpi/blob/master/goal.png?raw=true)
+![alt text](https://github.com/mehulwarade/wifi-to-eth-rpi/blob/master/goal.png?raw=true =100x20)
 
 #Tested on:
 OS: Dietpi v6.31.2
@@ -98,4 +98,3 @@ https://raspberrypi.stackexchange.com/a/50073
 https://github.com/arpitjindal97/raspbian-recipes/blob/master/wifi-to-eth-route.sh  
 
 https://vpsfix.com/community/server-administration/no-etc-rc-local-file-on-ubuntu-18-04-heres-what-to-do/ 
- 
