@@ -24,16 +24,18 @@ Edit the eth0 section like this:
 ```s
 allow-hotplug eth0  
 iface eth0 inet static  
-address 192.168.2.1
-netmask 255.255.255.0
-network 192.168.2.0
-broadcast 192.168.2.255
+address 192.168.2.1 
+netmask 255.255.255.0 
+network 192.168.2.0 
+broadcast 192.168.2.255 
 ```
 
 Next, we will configure dnsmasq. The shipped dnsmasq config file contains a lot of information on how to use it. So, I will advise to move it and create a new one.
 
-```sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig ```
-```sudo nano /etc/dnsmasq.conf```
+```conf
+sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig 
+sudo nano /etc/dnsmasq.conf
+```
 
 Paste the following into the new file
 
