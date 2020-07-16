@@ -74,7 +74,7 @@ Edit /etc/sysctl.conf and uncomment this line:
 
 net.ipv4.ip_forward=1
 
-```sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward```
+```sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"```
 
 #### Next set up ip routing:
 ```conf
@@ -89,6 +89,9 @@ sudo route add -net default gw 192.168.2.1 netmask 0.0.0.0 dev eth0 metric $a
 
 #### That's it! Plug ethernet cable into other device and it should start having internet connection
 
+## Note:
+The settings do not persist over reboot.
+After reboot: run wifi-eth.sh script to start the internet back on
 
 ## References:
 https://www.instructables.com/id/Share-WiFi-With-Ethernet-Port-on-a-Raspberry-Pi/ 
